@@ -6,13 +6,13 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:18:12 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/03 16:44:51 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/26 15:03:14 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	get_median(t_stack *stack, long int pushed)
+long int	get_median(t_stack *stack, long int sort_len)
 {
 	long int	sum;
 	long int	med;
@@ -20,10 +20,10 @@ long int	get_median(t_stack *stack, long int pushed)
 	int			alen_dup;
 
 	sum = 0;
-	if (pushed == 0)
+	if (sort_len == 0)
 		alen = get_len(stack);
 	else
-		alen = pushed;
+		alen = sort_len;
 	alen_dup = alen;
 	while (alen_dup--)
 	{
@@ -32,6 +32,9 @@ long int	get_median(t_stack *stack, long int pushed)
 	}
 	stack = stack->next;
 	med = sum / alen;
+	if (sort_len % 2 == 0)
+		med++;
+	// printf("med %ld\n", med);
 	return (med);
 }
 
@@ -110,23 +113,65 @@ int	get_len(t_stack *stack)
 // 	return (temp);
 // }
 
-long int	get_minnum(t_stack *stack)
+long int	get_mincont(t_stack *stack)
 {
-	long int	minnum;
+	long int	mincont;
 	t_stack		*temp;
 
 	temp = stack;
 	while (stack->sub_cont != -1)
 		stack = stack->next;
-	minnum = stack->content;		
+	mincont = stack->content;		
 	while (stack->next != temp)
 	{
-		if (stack->content < minnum && stack->sub_cont == -1)
-			minnum = stack->content;
+		if (stack->content < mincont && stack->sub_cont == -1)
+			mincont = stack->content;
 		stack = stack->next;
 	}
-	if (stack->content < minnum && stack->sub_cont == -1)
-		minnum = stack->content;
+	if (stack->content < mincont && stack->sub_cont == -1)
+		mincont = stack->content;
 	stack = stack->next;
-	return (minnum);
+	return (mincont);
+}
+
+long int	get_minsubcont(t_stack *stack)
+{
+	long int	minsubcont;
+	t_stack		*temp;
+
+	temp = stack;
+	minsubcont = stack->sub_cont;
+	while (stack->next != temp)
+	{
+		if (stack->sub_cont < minsubcont)
+		{
+			minsubcont = stack->sub_cont;
+		}
+		stack = stack->next;
+	}
+	if (stack->sub_cont < minsubcont)
+		{
+			minsubcont = stack->sub_cont;
+		}
+	stack = stack->next;
+	return (minsubcont);
+}
+
+long int	get_maxnum(t_stack *stack)
+{
+	long int	maxnum;
+	t_stack		*temp;
+
+	temp = stack;
+	maxnum = stack->sub_cont;
+	while (stack->next != temp)
+	{
+		if (stack->sub_cont > maxnum)
+			maxnum = stack->sub_cont;
+		stack = stack->next;
+	}
+	if (stack->sub_cont > maxnum)
+		maxnum = stack->sub_cont;
+	stack = stack->next;
+	return (maxnum);
 }

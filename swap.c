@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 16:56:30 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/02 15:11:30 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/04 13:38:25 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,25 @@ void	swap_both(t_stack **a, t_stack **b)
 	swap(a, 'n');
 	swap(b, 'n');
 	ft_putstr_fd("ss\n", 1);
+}
+
+void	swap_multiple(t_stack **a, t_stack **b, char *func, int times)
+{
+	while (times--)
+	{
+		if (ft_strncmp(func, "sa", 2) == 0)
+		{
+			if (*a && *b && (*b)->content < (*b)->next->content)
+				swap_both(a, b);
+			else
+				swap(a, 'a');
+		}
+		if (ft_strncmp(func, "sb", 2) == 0)
+		{
+			if (*a && *b && (*a)->content > (*a)->next->content)
+				swap_both(a, b);
+			else
+				swap(b, 'b');
+		}
+	}
 }

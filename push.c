@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:32:15 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/03 17:13:39 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/26 12:57:59 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,50 +40,76 @@ void	push_multiple(t_stack **a, t_stack **b, char *func, int times)
 	}
 }
 
-int	push_less_med(t_stack **stack_one, t_stack **stack_two, long int med)
+int	push_smaller_than(t_stack **a, t_stack **b, long int num, int rr)
 {
-	int			len_one;
-	int			len_two;
+	int	pushed;
+	int	times;
 
-	len_one = get_len(*stack_one);
-	len_two = 0;
-	if (len_one % 2 == 0)
-		med++;
-	while (len_two != len_one / 2)
-	{
-		if ((*stack_one)->sub_cont < med)
-		{
-			push_b(stack_one, stack_two);
-			len_two++;
-		}
-		else
-			rotate(stack_one, 'a');
-	}
-	return (len_two);
-}
-
-int	push_more_med(t_stack **stack_one, t_stack **stack_two, long int pushed)
-{
-	long int	med;
-	int			len_two;
-	int			times;
-
-	med = get_median(*stack_one, pushed);
-	len_two = 0;
+	pushed = 0;
 	times = 0;
-	while (len_two != pushed / 2)
+	while (has_to_push(*a, num, 0) == 1)
 	{
-		if ((*stack_one)->sub_cont > med)
+		if ((*a)->sub_cont < num)
 		{
-			push_a(stack_two, stack_one);
-			len_two++;
+			push_b(a, b);
+			pushed++;
 		}
 		else
 		{
-			rotate(stack_one, 'b');
+			rotate(a, 'a');
 			times++;
 		}
 	}
-	rotate_multiple(stack_one, 'b', "rr", times);
-	return (len_two);
+	if (rr == 1 &&  get_len(*a) > 3)// get_len(*a) > 5 can reduce 1 5 2 4 3 but make 8 broken
+		rotate_multiple(a, 'a', "rr", times);
+	// printf("PUSH SMALL\n");
+	return (pushed);
+}
+
+// int	push_smaller_than(t_stack **stack_one, t_stack **stack_two, long int med)
+// {
+// 	int			len;
+// 	int			pushed;
+
+// 	len = get_len(*stack_one);
+// 	pushed = 0;
+// 	if (len % 2 == 0)
+// 		med++;
+// 	while (pushed != len / 2)
+// 	{
+// 		if ((*stack_one)->sub_cont < med)
+// 		{
+// 			push_b(stack_one, stack_two);
+// 			pushed++;
+// 		}
+// 		else
+// 			rotate(stack_one, 'a');
+// 	}
+// 	return (pushed);
+// }
+
+int	push_larger_than(t_stack **b, t_stack **a, long int num)
+{
+	int	pushed;
+	int	times;
+
+	pushed = 0;
+	times = 0;
+	while (has_to_push(*b, num, 1) == 1)
+	{
+		if ((*b)->sub_cont > num)
+		{
+			push_a(a, b);
+			pushed++;
+		}
+		else
+		{
+			rotate(b, 'b');
+			times++;
+		}
+	}
+	if (get_len(*b) > 5)
+		rotate_multiple(b, 'b', "rr", times);
+	// printf("PUSH LARGE\n");
+	return (pushed);
 }

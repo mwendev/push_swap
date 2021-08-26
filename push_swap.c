@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 19:10:54 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/03 15:14:34 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/26 15:46:30 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_stack	*assign_subcont(t_stack *stack, int alen)
 	sub_cont = 0;
 	while (++sub_cont <= alen)
 	{
-		minnum = get_minnum(stack);
+		minnum = get_mincont(stack);
 		while (stack->next != temp)
 		{
 			if (stack->content == minnum)
@@ -57,16 +57,16 @@ t_stack	*assign_subcont(t_stack *stack, int alen)
 
 void	push_swap(t_stack **a, t_stack **b, int alen)
 {
-	if (alen == 2)
-		sort_two(a, b, 'a');
-	else if (alen == 3)
-		sort_three(a, b, 'a');
-	else if (alen <= 5)
-		sort_five(a, b);
+	if (alen <= 5)
+		sort_five(a, b, alen);
 	else if (alen <= 10)
 		sort_ten(a, b);
+	else if (alen <= 25)
+		sort_twentyfive(a, b, get_len(*a), get_len(*a));
+	else if (alen <= 50)
+		sort_fifty(a, b, get_len(*a), get_len(*a));
 	else if (alen <= 100)
-		sort_hundred(a, b);
+		sort_hundred(a, b, get_len(*a), get_len(*a));
 }
 
 int	main(int argc, char **argv)
@@ -96,8 +96,10 @@ int	main(int argc, char **argv)
 	}
 	a = assign_subcont(a, alen);
 	if (sorted == 0)
+	{
 		push_swap(&a, &b, alen);
-	for (int i = 0; i < 50; i++)
+	}
+	for (int i = 0; i < 100; i++)
 	{
 		printf("cont is %ld sub is %ld\n", a->content, a->sub_cont);
 		// printf("a cont is: %ld sub is: %ld  b cont is: %ld sub is: %ld\n", a->content, a->sub_cont, b->content, b->sub_cont);
