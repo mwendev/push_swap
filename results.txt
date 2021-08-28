@@ -1,0 +1,878 @@
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+pb
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+pb
+pb
+ra
+ra
+pb
+rra
+rra
+rra
+pb
+ra
+ra
+pb
+sa
+pa
+pa
+pa
+sb
+pa
+pa
+rb
+rb
+rb
+pa
+pa
+pa
+rrb
+rrb
+rrb
+ra
+ss
+rra
+pa
+pa
+pa
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+pa
+pa
+rb
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+ra
+pb
+pb
+ra
+ra
+pb
+rra
+rra
+rra
+ra
+sa
+rra
+sa
+pa
+sb
+pa
+sa
+pa
+pa
+rb
+pa
+rb
+pa
+rrb
+rrb
+sb
+pa
+pa
+pa
+rb
+rb
+pa
+pa
+rb
+rb
+pa
+pa
+pa
+rb
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+pa
+rb
+pa
+pa
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+rra
+rra
+rra
+rra
+ra
+pb
+pb
+rra
+sa
+pa
+pa
+sb
+pa
+pa
+pa
+pa
+rb
+pa
+rb
+rb
+pa
+rrb
+rrb
+rrb
+sa
+ra
+sa
+rra
+pa
+sb
+pa
+sa
+pa
+pa
+rb
+pa
+rb
+rb
+rb
+pa
+rb
+pa
+pa
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+ra
+pb
+ra
+pb
+ra
+pb
+rra
+rra
+rra
+sa
+ra
+sa
+rra
+pa
+sb
+pa
+pa
+pa
+rb
+pa
+pa
+rrb
+ra
+ss
+rra
+sa
+pa
+sb
+pa
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rb
+rb
+pa
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+ra
+pb
+ra
+pb
+pb
+pb
+ra
+pb
+pb
+rra
+rra
+rra
+pb
+ra
+ra
+pb
+pb
+rra
+rra
+pb
+ra
+ra
+pb
+rra
+rra
+ss
+pa
+pa
+pa
+sb
+pa
+sa
+pa
+rb
+pa
+rb
+rb
+pa
+pa
+rrb
+rrb
+rrb
+sb
+pa
+sb
+pa
+sa
+pa
+pa
+rb
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+pa
+rb
+rb
+pa
+rb
+pa
+pa
+rb
+pa
+pa
+rb
+rb
+rb
+rb
+rb
+rb
+rb
+pa
+pa
+pa
+rb
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+ra
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+pb
+rra
+rra
+rra
+rra
+rra
+rra
+rra
+ra
+pb
+pb
+ra
+pb
+rra
+rra
+ra
+pb
+ra
+pb
+rra
+rra
+sa
+pa
+pa
+sb
+pa
+sb
+pa
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rrb
+rrb
+rrb
+ss
+pa
+sb
+pa
+pa
+pa
+pa
+rb
+pa
+pa
+pa
+rb
+pa
+rb
+rb
+rb
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rb
+pa
+pa
+rb
+pa
+pa
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+rra
+rra
+rra
+rra
+rra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+rra
+rra
+sa
+pa
+pa
+pa
+sb
+pa
+pa
+pa
+rb
+pa
+pa
+rrb
+sa
+ra
+sa
+rra
+pa
+sb
+pa
+sa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pb
+pb
+ra
+pb
+ra
+pb
+pb
+rra
+rra
+ra
+pb
+ra
+pb
+pb
+rra
+rra
+pa
+sb
+pa
+sa
+pa
+pa
+rb
+pa
+pa
+ss
+ra
+sa
+rra
+pa
+pa
+cont is -191 sub is 1
+cont is -190 sub is 2
+cont is -189 sub is 3
+cont is -188 sub is 4
+cont is -184 sub is 5
+cont is -183 sub is 6
+cont is -169 sub is 7
+cont is -154 sub is 8
+cont is -151 sub is 9
+cont is -150 sub is 10
+cont is -145 sub is 11
+cont is -134 sub is 12
+cont is -131 sub is 13
+cont is -129 sub is 14
+cont is -121 sub is 15
+cont is -116 sub is 16
+cont is -115 sub is 17
+cont is -114 sub is 18
+cont is -106 sub is 19
+cont is -103 sub is 20
+cont is -99 sub is 21
+cont is -85 sub is 22
+cont is -83 sub is 23
+cont is -81 sub is 24
+cont is -80 sub is 25
+cont is -79 sub is 26
+cont is -77 sub is 27
+cont is -71 sub is 28
+cont is -65 sub is 29
+cont is -58 sub is 30
+cont is -56 sub is 31
+cont is -54 sub is 32
+cont is -47 sub is 33
+cont is -41 sub is 34
+cont is -38 sub is 35
+cont is -37 sub is 36
+cont is -30 sub is 37
+cont is -29 sub is 38
+cont is -28 sub is 39
+cont is -22 sub is 40
+cont is -18 sub is 41
+cont is -17 sub is 42
+cont is -13 sub is 43
+cont is -11 sub is 44
+cont is -6 sub is 45
+cont is -4 sub is 46
+cont is -3 sub is 47
+cont is 1 sub is 48
+cont is 2 sub is 49
+cont is 3 sub is 50
+cont is 6 sub is 51
+cont is 18 sub is 52
+cont is 20 sub is 53
+cont is 21 sub is 54
+cont is 24 sub is 55
+cont is 31 sub is 56
+cont is 35 sub is 57
+cont is 36 sub is 58
+cont is 39 sub is 59
+cont is 47 sub is 60
+cont is 51 sub is 61
+cont is 52 sub is 62
+cont is 54 sub is 63
+cont is 59 sub is 64
+cont is 66 sub is 65
+cont is 67 sub is 66
+cont is 71 sub is 67
+cont is 72 sub is 68
+cont is 74 sub is 69
+cont is 78 sub is 70
+cont is 96 sub is 71
+cont is 98 sub is 72
+cont is 100 sub is 73
+cont is 102 sub is 74
+cont is 106 sub is 75
+cont is 110 sub is 76
+cont is 114 sub is 77
+cont is 119 sub is 78
+cont is 120 sub is 79
+cont is 122 sub is 80
+cont is 124 sub is 81
+cont is 126 sub is 82
+cont is 129 sub is 83
+cont is 130 sub is 84
+cont is 132 sub is 85
+cont is 133 sub is 86
+cont is 134 sub is 87
+cont is 136 sub is 88
+cont is 147 sub is 89
+cont is 148 sub is 90
+cont is 149 sub is 91
+cont is 152 sub is 92
+cont is 154 sub is 93
+cont is 161 sub is 94
+cont is 163 sub is 95
+cont is 170 sub is 96
+cont is 172 sub is 97
+cont is 180 sub is 98
+cont is 186 sub is 99
+cont is 195 sub is 100

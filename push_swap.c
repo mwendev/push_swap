@@ -6,7 +6,7 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 19:10:54 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/26 15:46:30 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/28 23:35:04 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,36 @@ void	free_stack(t_stack *stack)
 		free(stack);
 }
 
-t_stack	*assign_subcont(t_stack *stack, int alen)
+t_stack	*assign_subcont_stack(t_stack *a, int alen, char c)
 {
 	long int	minnum;
 	t_stack		*temp;
 	long int	sub_cont;
 
-	temp = stack;
+	temp = a;
 	sub_cont = 0;
 	while (++sub_cont <= alen)
 	{
-		minnum = get_mincont(stack);
-		while (stack->next != temp)
+		minnum = get_mincont(a);
+		while (a->next != temp)
 		{
-			if (stack->content == minnum)
-				stack->sub_cont = sub_cont;
-			stack = stack->next;
+			a->stack = c;
+			if (a->content == minnum)
+				a->sub_cont = sub_cont;
+			a = a->next;
 		}
-		if (stack->content == minnum)
-			stack->sub_cont = sub_cont;
-		stack = stack->next;
+		a->stack = c;
+		if (a->content == minnum)
+			a->sub_cont = sub_cont;
+		a = a->next;
 	}
-	return (stack);
+	return (a);
 }
 
 void	push_swap(t_stack **a, t_stack **b, int alen)
 {
-	if (alen <= 5)
-		sort_five(a, b, alen);
-	else if (alen <= 10)
-		sort_ten(a, b);
-	else if (alen <= 25)
-		sort_twentyfive(a, b, get_len(*a), get_len(*a));
+	if (alen <= 13)
+		sort_ten(a, b, alen);
 	else if (alen <= 50)
 		sort_fifty(a, b, get_len(*a), get_len(*a));
 	else if (alen <= 100)
@@ -94,7 +92,7 @@ int	main(int argc, char **argv)
 			sorted = 0;
 		++alen;
 	}
-	a = assign_subcont(a, alen);
+	a = assign_subcont_stack(a, alen, 'a');
 	if (sorted == 0)
 	{
 		push_swap(&a, &b, alen);
@@ -102,7 +100,7 @@ int	main(int argc, char **argv)
 	for (int i = 0; i < 100; i++)
 	{
 		printf("cont is %ld sub is %ld\n", a->content, a->sub_cont);
-		// printf("a cont is: %ld sub is: %ld  b cont is: %ld sub is: %ld\n", a->content, a->sub_cont, b->content, b->sub_cont);
+		// printf("cont: %ld sub: %ld %c	cont: %ld sub: %ld %c\n", a->content, a->sub_cont, a->stack, b->content, b->sub_cont, b->stack);
 		a = a->next;
 		// b = b->next;
 	}

@@ -6,13 +6,13 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:18:12 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/26 15:03:14 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/28 23:50:20 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	get_median(t_stack *stack, long int sort_len)
+long int	get_median(t_stack *target, long int sort_len)
 {
 	long int	sum;
 	long int	med;
@@ -21,20 +21,21 @@ long int	get_median(t_stack *stack, long int sort_len)
 
 	sum = 0;
 	if (sort_len == 0)
-		alen = get_len(stack);
+		alen = get_len(target);
 	else
 		alen = sort_len;
 	alen_dup = alen;
 	while (alen_dup--)
 	{
-		sum += stack->sub_cont;
-		stack = stack->next;
+		sum += target->sub_cont;
+		target = target->next;
 	}
-	stack = stack->next;
+	target = target->next;
 	med = sum / alen;
-	if (sort_len % 2 == 0)
+	if (target->stack == 'a' && sort_len % 2 == 0)
 		med++;
-	// printf("med %ld\n", med);
+	else if (target->stack == 'b' && sort_len % 2 == 1)
+		med--;
 	return (med);
 }
 

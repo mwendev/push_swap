@@ -6,37 +6,37 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 17:03:59 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/26 00:28:19 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/27 17:22:10 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	has_to_push(t_stack *stack, long int num, int larger)
+int	has_to_push(t_stack *target, long int num, int len)
 {
-	int	len;
 	int	has_to_push;
 
-	if (!stack)
+	if (!target)
 		return (-1);
-	len = get_len(stack);
 	has_to_push = 0;
-	while (len--)
+	if ((target->stack == 'a' && target->sub_cont < num) ||
+		(target->stack == 'b' && target->sub_cont > num))
+		return (1);
+	else if ((target->stack == 'a' && target->next->sub_cont < num) ||
+			(target->stack == 'b' && target->next->sub_cont > num))
+		return (2);
+	else
 	{
-		if (larger == 1)
+		while (len--)
 		{
-			if (stack->sub_cont > num)
-				has_to_push = 1;
+			if ((target->stack == 'a' && target->sub_cont < num) ||
+				(target->stack == 'b' && target->sub_cont > num))
+				has_to_push = 3;
+			target = target->next;
 		}
-		else
-		{
-			if (stack->sub_cont < num)
-				has_to_push = 1;
-		}
-		stack = stack->next;
+		target = target->next;
+		return (has_to_push);
 	}
-	stack = stack->next;
-	return (has_to_push);
 }
 
 int	has_to_sort(t_stack *stack)

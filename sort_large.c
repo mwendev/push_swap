@@ -6,69 +6,97 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 18:31:58 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/26 16:29:36 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/29 00:16:45 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_twentyfive(t_stack **a, t_stack **b, int sort_len, int origin_len)
+void	sort_back(t_stack **b, t_stack **a, int sort_len)
 {
-	if (has_to_sort(*a) == 1 && sort_len <= 5)
-		sort_five(a, b, sort_len);
-	else if (has_to_sort(*a) == 1 && sort_len <= 10)
-		sort_ten(a, b);
-	else if (sort_len > 10)
+	int	to_sort;
+	int	still_in_b;
+
+	// printf("sort %d med %ld blen %d\n", sort_len, get_median(*b, sort_len), get_len(*b));
+	to_sort = push_break(b, a, get_median(*b, sort_len), 1);
+	// printf("tosort %d\n", to_sort);
+	if (to_sort <= 13)
+		sort_ten(a, b, to_sort);
+	// still_in_b = total_len - to_sort;//A6 B31 || A3 B27
+	still_in_b = sort_len - to_sort;//A6 B6 || A3done B3go back
+	// printf("still in b %d\n", still_in_b);
+	if (still_in_b > 3)
 	{
-		push_smaller_than(a, b, get_minsubcont(*a) + 10, 0);
-		sort_twentyfive(a, b, get_len(*a), origin_len);
+		sort_back(b, a, still_in_b);
+		return ;
 	}
-	if (get_len(*a) != origin_len)
+	while (still_in_b-- && *b)
 	{
-		sort_len = push_larger_than(b, a, get_maxnum(*b) - 10);
-		if (has_to_sort(*a) == 1)
-			sort_ten(a, b);
+		sort_two(b, a);
+		push(b, a);
+		sort_two(a, b);
+	}
+	// for (int i = 0; i < 25; i++)
+	// {
+	// 	// printf("cont is %ld sub is %ld\n", a->content, a->sub_cont);
+	// 	printf("cont: %ld sub: %ld %c	cont: %ld sub: %ld %c\n", (*a)->content, (*a)->sub_cont, (*a)->stack, (*b)->content, (*b)->sub_cont, (*b)->stack);
+	// 	*a = (*a)->next;
+	// 	*b = (*b)->next;
+	// }
+	// exit (1);
+}
+
+void	sort_fifty(t_stack **a, t_stack **b, int sort_len, int total_len)
+{
+	int	pushed;
+
+	// printf("sort_len %d  total %d\n", sort_len, total_len);
+	if (has_to_sort(*a) != 0 && sort_len <= 13)
+		sort_ten(a, b, sort_len);
+	else
+	{
+		pushed = push_break(a, b, get_median(*a, sort_len), 0);
+		if (sort_len % 2 != 0)
+			pushed++;
+		sort_fifty(a, b, pushed, total_len);
+	}
+	if (total_len - sort_len != 0)
+	{
+		if (sort_len == 13)
+			sort_len--;
+		sort_back(b, a, sort_len);
 	}
 }
 
-void	sort_fifty(t_stack **a, t_stack **b, int sort_len, int origin_len)
+void	sort_back_hundred(t_stack **b, t_stack **a, int sort_len)
 {
-	int	len;
+	int	times;
 
-	if (has_to_sort(*a) == 1 && sort_len <= 25)
-		sort_twentyfive(a, b, sort_len, sort_len);
-	else
+	times = 0;
+	while (sort_len > 13)
 	{
-		sort_len = push_smaller_than(a, b, get_median(*a, sort_len), 0);
-		sort_fifty(a, b, sort_len, origin_len);
+		push_break(b, a, get_maxnum(*b) - 13, 1);
+		sort_ten(a, b, 13);
+		sort_len -= 13;
 	}
-	len = get_len(*a);
-	if (len != origin_len)
-	{
-		while (len-- && get_len(*b) > 0)
-			push_a(a, b);
-		if (has_to_sort(*a) == 1)
-			sort_twentyfive(a, b, sort_len, get_len(*a));
-	}
+	while (sort_len-- && *b)
+		push(b, a);
+	sort_ten(a, b, 11);
 }
 
-void	sort_hundred(t_stack **a, t_stack **b, int sort_len, int origin_len)
+void	sort_hundred(t_stack **a, t_stack **b, int sort_len, int total_len)
 {
-	int	len;
+	int	pushed;
 
-	if (has_to_sort(*a) == 1 && sort_len <= 50)
-		sort_fifty(a, b, sort_len, get_len(*a));
+	if (has_to_sort(*a) != 0 && sort_len <= 50)
+		sort_fifty(a, b, sort_len, sort_len);
 	else
 	{
-		push_smaller_than(a, b, get_median(*a, sort_len), 0);
-		sort_hundred(a, b, get_len(*a), origin_len);
+		pushed = push_break(a, b, get_median(*a, sort_len), 0);
+		if (sort_len % 2 != 0)
+			pushed++;
+		sort_hundred(a, b, pushed, total_len);
 	}
-	len = get_len(*a);
-	if (len != origin_len)
-	{
-		while (len-- && get_len(*b) > 0)
-			push_a(a, b);
-		if (has_to_sort(*a) == 1)
-			sort_fifty(a, b, sort_len, get_len(*a));
-	}
+	if (get_len(*a) <= 100 && *b)
+		sort_back_hundred(b, a, sort_len);
 }

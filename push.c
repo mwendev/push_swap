@@ -6,110 +6,93 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:32:15 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/26 12:57:59 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/27 17:42:23 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_stack **a, t_stack **b)
+void	push(t_stack **from, t_stack **to)
 {
-	if (*b == NULL)
-		*b = stacknew((*a)->content, (*a)->sub_cont);
+	if (*to == NULL)
+		*to = stacknew((*from)->content, (*from)->sub_cont);
 	else
-		*b = stackadd(*b, (*a)->content, (*a)->sub_cont, 1);
-	stackdel(a);
-	ft_putstr_fd("pb\n", 1);
+		*to = stackadd(*to, (*from)->content, (*from)->sub_cont, 1);
+	if ((*from)->stack == 'a')
+		(*to)->stack = 'b';
+	else if ((*from)->stack == 'b')
+		(*to)->stack = 'a';
+	stackdel(from);
+	if ((*to)->stack == 'a')
+		ft_putstr_fd("pa\n", 1);
+	else if ((*to)->stack == 'b')
+		ft_putstr_fd("pb\n", 1);
 }
 
-void	push_a(t_stack **a, t_stack **b)
-{
-	*a = stackadd(*a, (*b)->content, (*b)->sub_cont, 1);
-	stackdel(b);
-	ft_putstr_fd("pa\n", 1);
-}
+// void	push_a(t_stack **a, t_stack **b)
+// {
+// 	*a = stackadd(*a, (*b)->content, (*b)->sub_cont, 1);
+// 	stackdel(b);
+// 	ft_putstr_fd("pa\n", 1);
+// }
 
-void	push_multiple(t_stack **a, t_stack **b, char *func, int times)
+void	push_multiple(t_stack **from, t_stack **to, int times)
 {
 	while (times--)
-	{
-		if (ft_strncmp(func, "pa", 2) == 0)
-			push_a(a, b);
-		else
-			push_b(a, b);
-	}
+		push(from, to);
 }
 
-int	push_smaller_than(t_stack **a, t_stack **b, long int num, int rr)
+int	push_break(t_stack **from, t_stack **to, long int num, int rr)
 {
 	int	pushed;
 	int	times;
 
 	pushed = 0;
 	times = 0;
-	while (has_to_push(*a, num, 0) == 1)
+	while (has_to_push(*from, num, get_len(*from)) != 0)
 	{
-		if ((*a)->sub_cont < num)
+		if (has_to_push(*from, num, get_len(*from)) == 1)
 		{
-			push_b(a, b);
+			push(from, to);
 			pushed++;
 		}
+		// else if (has_to_push(*from, num, get_len(*from)) == 2)//test if help for sort100
+		// 	sort_two(from, to);
 		else
 		{
-			rotate(a, 'a');
+			rotate(from, 'y');
 			times++;
 		}
 	}
-	if (rr == 1 &&  get_len(*a) > 3)// get_len(*a) > 5 can reduce 1 5 2 4 3 but make 8 broken
-		rotate_multiple(a, 'a', "rr", times);
+	if (((*from)->stack == 'a' && rr == 1 && get_len(*from) > 3) ||
+		((*from)->stack == 'b' && get_len(*from) > 5))
+		rotate_multiple(from, "rr", times);
 	// printf("PUSH SMALL\n");
 	return (pushed);
 }
 
-// int	push_smaller_than(t_stack **stack_one, t_stack **stack_two, long int med)
+// int	push_larger_than(t_stack **b, t_stack **a, long int num)
 // {
-// 	int			len;
-// 	int			pushed;
+// 	int	pushed;
+// 	int	times;
 
-// 	len = get_len(*stack_one);
 // 	pushed = 0;
-// 	if (len % 2 == 0)
-// 		med++;
-// 	while (pushed != len / 2)
+// 	times = 0;
+// 	while (has_to_push(*b, num, 1) == 1)
 // 	{
-// 		if ((*stack_one)->sub_cont < med)
+// 		if ((*b)->sub_cont > num)
 // 		{
-// 			push_b(stack_one, stack_two);
+// 			push_a(a, b);
 // 			pushed++;
 // 		}
 // 		else
-// 			rotate(stack_one, 'a');
+// 		{
+// 			rotate(b, 'b');
+// 			times++;
+// 		}
 // 	}
+// 	if (get_len(*b) > 5)
+// 		rotate_multiple(b, 'b', "rr", times);
+// 	// printf("PUSH LARGE\n");
 // 	return (pushed);
 // }
-
-int	push_larger_than(t_stack **b, t_stack **a, long int num)
-{
-	int	pushed;
-	int	times;
-
-	pushed = 0;
-	times = 0;
-	while (has_to_push(*b, num, 1) == 1)
-	{
-		if ((*b)->sub_cont > num)
-		{
-			push_a(a, b);
-			pushed++;
-		}
-		else
-		{
-			rotate(b, 'b');
-			times++;
-		}
-	}
-	if (get_len(*b) > 5)
-		rotate_multiple(b, 'b', "rr", times);
-	// printf("PUSH LARGE\n");
-	return (pushed);
-}
