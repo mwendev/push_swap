@@ -6,60 +6,31 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 13:18:12 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/28 23:50:20 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 12:07:46 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-long int	get_median(t_stack *target, long int sort_len)
+long int	get_median(t_stack *target, int sort_len)
 {
 	long int	sum;
 	long int	med;
-	int			alen;
-	int			alen_dup;
+	int			len;
 
 	sum = 0;
-	if (sort_len == 0)
-		alen = get_len(target);
-	else
-		alen = sort_len;
-	alen_dup = alen;
-	while (alen_dup--)
+	len = sort_len;
+	while (len--)
 	{
 		sum += target->sub_cont;
 		target = target->next;
 	}
 	target = target->next;
-	med = sum / alen;
-	if (target->stack == 'a' && sort_len % 2 == 0)
+	med = sum / sort_len;
+	if (target->stack == 'a' && (sort_len % 2 == 0 || sort_len == 7))
 		med++;
-	else if (target->stack == 'b' && sort_len % 2 == 1)
-		med--;
 	return (med);
 }
-
-// int	get_position(t_stack **stack, long int med)
-// {
-// 	long int	first;
-// 	long int	check_point;
-// 	int			position;
-// 	int			ret_position;
-
-// 	first = (*stack)->content;
-// 	check_point = (*stack)->next->content;
-// 	position = -1;
-// 	ret_position = -1;
-// 	while ((*stack)->content != check_point)
-// 	{
-// 		check_point = first;
-// 		position++;
-// 		if ((*stack)->content > med && ret_position == -1)
-// 			ret_position = position;
-// 		*stack = (*stack)->next;
-// 	}
-// 	return (ret_position);
-// }
 
 int	get_len(t_stack *stack)
 {
@@ -79,41 +50,6 @@ int	get_len(t_stack *stack)
 	return (len);
 }
 
-// int	get_step(t_stack **stack, int position, long int target, int direction)
-// {
-// 	t_stack	**temp;
-// 	int		step;
-
-// 	temp = stack;
-// 	step = 0;
-// 	while (position--)
-// 		*temp = (*temp)->next;
-// 	while ((*temp)->content != target)
-// 	{
-// 		if (direction == 0)
-// 			*temp = (*temp)->prev;
-// 		if (direction == 1)
-// 			*temp = (*temp)->next;
-// 		step++;
-// 	}
-// 	return (step);
-// }
-
-// t_stack	**get_node(t_stack **stack, int node, int alen)//it changes stack
-// {
-// 	t_stack	**temp;
-
-// 	temp = stack;
-// 	while ((*temp)->valid == 0)
-// 		*temp = (*temp)->next;
-// 	if (node == 1)
-// 	{
-// 		while ((*temp)->valid == node && --alen)
-// 			*temp = (*temp)->next;
-// 	}
-// 	return (temp);
-// }
-
 long int	get_mincont(t_stack *stack)
 {
 	long int	mincont;
@@ -122,7 +58,7 @@ long int	get_mincont(t_stack *stack)
 	temp = stack;
 	while (stack->sub_cont != -1)
 		stack = stack->next;
-	mincont = stack->content;		
+	mincont = stack->content;
 	while (stack->next != temp)
 	{
 		if (stack->content < mincont && stack->sub_cont == -1)
@@ -145,15 +81,11 @@ long int	get_minsubcont(t_stack *stack)
 	while (stack->next != temp)
 	{
 		if (stack->sub_cont < minsubcont)
-		{
 			minsubcont = stack->sub_cont;
-		}
 		stack = stack->next;
 	}
 	if (stack->sub_cont < minsubcont)
-		{
-			minsubcont = stack->sub_cont;
-		}
+		minsubcont = stack->sub_cont;
 	stack = stack->next;
 	return (minsubcont);
 }

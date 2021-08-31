@@ -6,7 +6,7 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/12 12:00:25 by mwen              #+#    #+#              #
-#    Updated: 2021/07/26 13:01:21 by mwen             ###   ########.fr        #
+#    Updated: 2021/08/31 12:52:26 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,20 +31,20 @@ CFLAGS			=	-Wall -Werror -Wextra
 all:			$(NAME)
 
 $(NAME):		$(OBJS) $(OBJS_B)
-				ar rcs $(NAME) $(OBJS) $(OBJS_B)
+				@ar rcs $(NAME) $(OBJS) $(OBJS_B)
 
 bonus:			$(OBJS) $(OBJS_B)
-				ar rcs $(NAME) $(OBJS) $(OBJS_B)
+				@ar rcs $(NAME) $(OBJS) $(OBJS_B)
 
 %.o: 			%.c	$(HEADER_FILES)
-				$(CC) -c $(CFLAGS) -o $@ $<
+				@$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
-				$(RM) $(OBJS) $(OBJS_B)
+				@$(RM) $(OBJS) $(OBJS_B)
 
 fclean:			clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
-re:				fclean all
+re:				@fclean all
 
 .PHONY:			all %.o clean fcloean re bonus

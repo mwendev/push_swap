@@ -6,11 +6,11 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 21:57:36 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/27 13:22:58 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 12:07:51 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_stack	*stacknew(long int cont, long int sub_cont)
 {
@@ -71,15 +71,8 @@ void	stackdel(t_stack **stack)
 t_stack	*init_stack(t_stack *stack, long int cont, long int sub_cont)
 {
 	if (!stack)
-	{
 		stack = stacknew(cont, sub_cont);
-		// printf("%ld\n", (*stack)->content);
-	}
 	else
-	{
-		// printf("hi\n");
-		// printf("%ld\n", (*stack)->sub_cont);
 		stack = stackadd(stack, cont, sub_cont, 0);
-	}
 	return (stack);
 }

@@ -6,11 +6,11 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 19:10:54 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/28 23:35:04 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 15:07:07 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_stack(t_stack *stack)
 {
@@ -57,26 +57,31 @@ t_stack	*assign_subcont_stack(t_stack *a, int alen, char c)
 	return (a);
 }
 
-void	push_swap(t_stack **a, t_stack **b, int alen)
+void	push_swap(t_stack **a, int alen)
 {
-	if (alen <= 13)
-		sort_ten(a, b, alen);
-	else if (alen <= 50)
-		sort_fifty(a, b, get_len(*a), get_len(*a));
+	t_stack	*b;
+
+	b = NULL;
+	if (alen <= 14)
+		sort_ten(a, &b, alen);
 	else if (alen <= 100)
-		sort_hundred(a, b, get_len(*a), get_len(*a));
+		sort_hundred(a, &b, alen, alen);
+	else if (alen == 500)
+		sort_fivehundred(a, &b, alen, alen);
+	if (has_to_sort(*a) == 1)
+		sort(a, &b, alen, alen);
+	if (b)
+		free_stack(b);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
-	t_stack		*b;
 	int			alen;
 	int			sorted;
 	long int	num;
-	
+
 	a = NULL;
-	b = NULL;
 	alen = 0;
 	sorted = 1;
 	if (argc < 2)
@@ -94,15 +99,6 @@ int	main(int argc, char **argv)
 	}
 	a = assign_subcont_stack(a, alen, 'a');
 	if (sorted == 0)
-	{
-		push_swap(&a, &b, alen);
-	}
-	for (int i = 0; i < 100; i++)
-	{
-		printf("cont is %ld sub is %ld\n", a->content, a->sub_cont);
-		// printf("cont: %ld sub: %ld %c	cont: %ld sub: %ld %c\n", a->content, a->sub_cont, a->stack, b->content, b->sub_cont, b->stack);
-		a = a->next;
-		// b = b->next;
-	}
+		push_swap(&a, alen);
 	free_stack(a);
 }

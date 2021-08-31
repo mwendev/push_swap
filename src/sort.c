@@ -6,11 +6,11 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 11:33:30 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/28 19:23:37 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 12:08:14 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	sort_two(t_stack **a, t_stack **b)
 {
@@ -19,13 +19,13 @@ void	sort_two(t_stack **a, t_stack **b)
 
 	first = (*a)->content;
 	sec = (*a)->next->content;
-	if (((*a)->stack == 'a' && first > sec) ||
-		((*a)->stack == 'b' && first < sec))
+	if (((*a)->stack == 'a' && first > sec)
+		|| ((*a)->stack == 'b' && first < sec))
 	{
-		if (*a && *b && 
-			(((*a)->stack == 'a' && (*b)->content < (*b)->next->content) ||
-			((*a)->stack == 'b' && (*b)->content > (*b)->next->content)))
-			swap_both(a, b);//try without when sorting 100
+		if (*a && *b
+			&& (((*a)->stack == 'a' && (*b)->content < (*b)->next->content)
+				|| ((*a)->stack == 'b' && (*b)->content > (*b)->next->content)))
+			swap_both(a, b);
 		else
 			swap(a, 'y');
 	}
@@ -40,7 +40,10 @@ void	sort_three(t_stack **a, t_stack **b)
 			rrotate(a, 'y');
 		else
 		{
-			rotate(a, 'y');
+			if (*b && (*b)->sub_cont < get_median(*b, get_len(*b)))
+				rotate_both(a, b);
+			else
+				rotate(a, 'y');
 			sort_two(a, b);
 			rrotate(a, 'y');
 		}
@@ -49,54 +52,52 @@ void	sort_three(t_stack **a, t_stack **b)
 		sort_two(a, b);
 }
 
-void	sort_five(t_stack **a, t_stack **b, int sort_len)//max 7
+void	sort_five(t_stack **a, t_stack **b, int sort_len)
 {
 	int	pushed;
 
-	if (sort_len == 3)
+	if (sort_len <= 3)
 	{
 		sort_three(a, b);
 		return ;
 	}
 	pushed = push_break(a, b, get_median(*a, sort_len), 1);
-	if (sort_len - pushed == 4)
-	{
-		push_break(a, b, get_median(*a, sort_len - pushed), 1);
-		sort_two(a, b);
-		push(b, a);
-		push(b, a);
-	}
 	sort_three(a, b);
+	if (pushed > 3)
+	{
+		sort_len = push_break(b, a, get_median(*b, pushed), 1);
+		sort_two(a, b);
+		pushed -= sort_len;
+	}
 	while (pushed--)
 	{
 		sort_two(b, a);
 		push(b, a);
 		sort_two(a, b);
 	}
-	// printf("SORT FIVE\n");
 }
 
-void	sort_ten(t_stack **a, t_stack **b, int sort_len)//max 12
+void	sort_ten(t_stack **a, t_stack **b, int sort_len)
 {
-	int	pushed_to_b;
-	int	pushed_to_a;
-	int	still_in_b;
+	int	pushed;
 
 	if (sort_len <= 7)
 	{
 		sort_five(a, b, sort_len);
 		return ;
 	}
-	pushed_to_b = push_break(a, b, get_median(*a, sort_len), 1);
-	sort_five(a, b, sort_len - pushed_to_b);
-	pushed_to_a = push_break(b, a, get_median(*b, pushed_to_b), 1);
-	still_in_b = pushed_to_b - pushed_to_a;
-	sort_three(a, b);
-	while (still_in_b-- && *b)
+	pushed = push_break(a, b, get_median(*a, sort_len), 1);
+	sort_five(a, b, sort_len - pushed);
+	while (pushed > 3)
+	{
+		sort_len = push_break(b, a, get_median(*b, pushed), 1);
+		sort_three(a, b);
+		pushed -= sort_len;
+	}
+	while (pushed--)
 	{
 		sort_two(b, a);
 		push(b, a);
 		sort_two(a, b);
 	}
-	// printf("SORT TEN\n");
 }

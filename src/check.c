@@ -6,11 +6,11 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 13:09:55 by mwen              #+#    #+#             */
-/*   Updated: 2021/07/30 15:31:25 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 12:07:38 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	check_dup(t_stack *a, long int num, int alen)
 {
@@ -27,7 +27,7 @@ void	check_numeric(t_stack *a, char *input, int alen)
 	int	i;
 
 	i = -1;
-	while(input[++i])
+	while (input[++i])
 	{
 		if (input[i] == '-' || input[i] == '+' || input[i] == ' ')
 		{
@@ -49,8 +49,8 @@ void	check_maxint(t_stack *a, long int num, int alen)
 
 int	check_sorted(t_stack *a, int alen)
 {
-	t_stack *new;
-	t_stack *old;
+	t_stack	*new;
+	t_stack	*old;
 	int		sorted;
 
 	new = NULL;

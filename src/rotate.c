@@ -6,11 +6,11 @@
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 10:58:38 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/27 12:33:17 by mwen             ###   ########.fr       */
+/*   Updated: 2021/08/31 12:08:05 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	rotate(t_stack **target, char print)
 {

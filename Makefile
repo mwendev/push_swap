@@ -6,35 +6,57 @@
 #    By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/30 17:49:17 by mwen              #+#    #+#              #
-#    Updated: 2021/08/27 13:37:53 by mwen             ###   ########.fr        #
+#    Updated: 2021/08/31 15:33:07 by mwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT_DIR		=	libft/
+SRC_DIR			=	src/
 LIB				=	libft.a
 SRCS			=	push_swap.c check.c error.c init_stack.c get.c sort.c\
-					swap.c rotate.c push.c has.c sort_large.c
-OBJS			=	$(SRCS:.c=.o)
-HEADER_FILES	=	push_swap.h
+					swap.c rotate.c push.c has.c sort_large.c sort_helper.c
+SRCS_WITHPATH	=	$(addprefix $(SRC_DIR), $(SRCS))
+OBJS			=	$(SRCS_WITHPATH:.c=.o)
 NAME			=	push_swap
 CC				=	gcc
 RM				= 	rm -f
-CFLAGS			=	-Wall -Werror -Wextra
+FLAGS			=	-Wall -Werror -Wextra
+
+define CAT
+      |\      _,,,---,,_
+ZZZzz /,`.-'`'    -.  ;-;;,_
+     |,4-  ) )-,_. ,\ (  `'-'
+    '---''(_/--'  `-'\_)  You've got a libft.a
+endef
+export CAT
+define DONE
+ _._     _,-'""`-._
+(,-.`._,'(       |\`-/|
+    `-.-' \ )-`( , o o)
+          `-    \`_`"'-   Time to push swup wup
+endef
+export DONE
 
 all:			$(LIB) $(NAME)
 
 $(LIB):
 				make -C $(LIBFT_DIR)
+				@echo "$$CAT"
 
 $(NAME):		$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)*.a -o push_swap
+				@$(CC) $(FLAGS) $(OBJS) $(LIBFT_DIR)*.a -o push_swap
+				@echo "$$DONE"
 
 clean:			
-				$(RM) $(OBJS)
+				@$(RM) $(OBJS)
 				make -C $(LIBFT_DIR) clean
-fclean:			
-				clean
-				$(RM) push_swap
+				@echo "Why did you clean me?"
+
+fclean:			clean
+				@$(RM) push_swap
+				@make -C $(LIBFT_DIR) fclean
+				@echo "There is NOTHING LEFT!"
 
 re:				fclean all
-.PHONY: all clean fclean re compile
+
+.PHONY: all clean fclean re

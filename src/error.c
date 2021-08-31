@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwen <mwen@student.42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/02 15:47:14 by mwen              #+#    #+#             */
-/*   Updated: 2021/08/02 15:49:09 by mwen             ###   ########.fr       */
+/*   Created: 2021/07/07 13:11:35 by mwen              #+#    #+#             */
+/*   Updated: 2021/08/31 15:22:46 by mwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	move_multiple(t_stack **stack, char c, char *func, int times)
+void	error(t_stack *a, int alen)
 {
-	while (times--)
-	{
-		if (ft_strncmp(func, "rr", 2) == 0)
-			rrotate(stack, c);
-		else if (ft_strncmp(func, "r", 1) == 0)
-			rotate(stack, c);
-		else if (ft_strncmp(func, "s", 1) == 0)
-			swap(stack, c);
-
-	}
+	alen = 0;
+	ft_putstr_fd("Error\n", 1);
+	if (a)
+		free_stack(a);
+	exit(1);
 }
